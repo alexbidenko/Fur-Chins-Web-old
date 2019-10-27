@@ -1,0 +1,86 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=cyrillic,cyrillic-ext');
+/* CSS Document */
+
+body, html, #mainBody {
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		background: #222;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	.titleBuying {
+		margin: 0;
+		max-height: 28px;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 28px;
+		color: gold;
+		text-align: center;
+	}
+	.tableMainText {
+		width: 50%;
+		padding: 0;
+	}
+	.mainImg {
+		width: 100%;
+		height: 33vw;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	.lead_text {
+		margin: 50px 50px 0 50px;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 36px;
+		color: gold;
+	}
+	.textInfo {
+		margin: 50px;
+		font-family: Tahoma, "sans-serif";
+		font-weight: 100;
+		font-size: 20px;
+		color: white;
+	}
+	.toBuyLabel {
+	    text-align: center;
+	    width: 100%;
+		padding: 8px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+	}
+	.link_buy {
+	    margin: 0 auto;
+	    padding: 6px;
+		text-align: center;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 36px;
+		background-color: gold;
+		color: #000;
+		border: 5px solid;
+		border-top-color: #F5EC71; 
+		border-right-color: #D1C84B;
+		border-bottom-color: #ABA005;
+		border-left-color: #CFC102;
+	}
+	.link_buy:hover {
+	    width: auto;
+	    padding: 6px;
+		text-align: center;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 36px;
+		background-color: #000;
+		color: gold;
+		cursor: pointer;
+		border: 5px solid;
+		border-top-color: #F5EC71; 
+		border-right-color: #D1C84B;
+		border-bottom-color: #ABA005;
+		border-left-color: #CFC102;
+}

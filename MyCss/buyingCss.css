@@ -1,0 +1,145 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=cyrillic,cyrillic-ext');
+/* CSS Document */
+
+body, html, #mainBody {
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		background: #222;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	#jsonDecode {
+	    width: 100%;
+	}
+	.titleBuying {
+		margin: 0;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 28px;
+		color: gold;
+		text-align: center;
+	}
+	.SuperBuying {
+	    display: block;
+	    width: 100%;
+	    height: 100px;
+		margin: 0;
+		padding: 30px;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 32px;
+		color: gold;
+		text-align: center;
+		border: 1px solid gold;
+	}
+	.setBlockImage {
+		width: 50%;
+		height: 33vw;
+	}
+	.blockImage {
+		background-color: white;
+		width: 50%;
+		height: 500px;
+		padding: 0;
+	}
+	.imgBuying {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 50%;
+		height: 500px;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		display: block;
+	}
+	.np1Image {
+		position: absolute;
+		width: 30px;
+		height: 60px;
+		z-index: 10;
+		padding: 8px 8px 8px 0;
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+	.np2Image {
+		position: absolute;
+		width: 30px;
+		height: 60px;
+		z-index: 10;
+		padding: 8px 0 8px 8px;
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+	.tableInfo {
+		position: relative;
+		left: 5%;
+		width: 90%;
+		height: 30vw;
+		border-collapse: collapse;
+		padding: 30px;
+		box-sizing: content-box;
+	}
+	.tableMainText {
+		padding: 0;
+		height: 12vw;
+		max-height: 12vw;
+	}
+	.tableMainText:hover {
+		padding: 0;
+		background: #444;
+		cursor: pointer;
+	}
+	.TLTd {
+		border: solid;
+		border-width: 0 2px 2px 0;
+		border-color: white;
+	}
+	.BRTd {
+		border: solid;
+		border-width: 2px 0 0 2px;
+		border-color: white;
+	}
+	.textInfo {
+		margin: 10px;
+		font-family: Tahoma, "sans-serif";
+		font-weight: 100;
+		font-size: 16px;
+		text-align: center;
+		color: white;
+	}
+	.textCost {
+		margin: 10px;
+		font-family: Tahoma, "sans-serif";
+		font-weight: 100;
+		font-size: 20px;
+		text-align: center;
+		color: gold;
+	}
+	.selectionQuality {
+	    margin: 0;
+	    padding: 0;
+	}
+	.variantQuality {
+	    margin: 0;
+	    padding: 10px 0 0 0;
+	    width: 100%;
+		height: 4vw;
+		text-align: center;
+		font-family: Tahoma, "sans-serif";
+		font-weight: 100;
+		font-size: 20px;
+		color: white;
+	}
+	.toBasket {
+	    position: absolute;
+	    display: block;
+	    box-sizing: border-box;
+	    border: 1px solid gold;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 18px;
+		color: gold;
+		text-align: center;
+	}

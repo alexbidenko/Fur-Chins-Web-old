@@ -1,0 +1,160 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=cyrillic,cyrillic-ext');
+/* CSS Document */
+
+body, html, #mainBody {
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		background: #222;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	.titleBuying {
+		margin: 0;
+		max-height: 52px;
+		margin: 20px;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 52px;
+		color: gold;
+		text-align: center;
+	}
+.block {
+	min-height: 650px;
+}
+	.blockImage {
+		background-color: white;
+		width: 100%;
+		height: 67vw;
+		padding: 0;
+	}
+	.SuperBuying {
+	    display: block;
+	    width: 100%;
+	    height: 210px;
+		margin: 0;
+		padding: 30px;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 50px;
+		color: gold;
+		text-align: center;
+		border: 2px solid gold;
+	}
+	.imgBuying {
+		position: absolute;
+		top: inherit;
+		width: 100%;
+		height: 67vw;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		display: block;
+	}
+	.np1Image {
+		position: absolute;
+		width: 60px;
+		height: 120px;
+		padding: 16px 16px 16px 0;
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+	.np2Image {
+		position: absolute;
+		width: 60px;
+		height: 120px;
+		padding: 16px 0 16px 16px;
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+	.tableInfo {
+	    margin: 40px 0;
+		position: relative;
+		left: 5%;
+		width: 90%;
+		height: 30vw;
+		border-collapse: collapse;
+		padding: 30px;
+		box-sizing: content-box;
+	}
+	.tableMainText {
+		padding: 0;
+		height: 27vw;
+		max-height: 27vw;
+	}
+	.tableMainText:hover {
+		background: #444;
+		cursor: pointer;
+	}
+	.TLTd {
+		border: solid;
+		border-width: 0 2px 2px 0;
+		border-color: white;
+	}
+	.BRTd {
+		border: solid;
+		border-width: 2px 0 0 2px;
+		border-color: white;
+	}
+	.textInfo {
+		margin: 20px;
+		font-family: Tahoma, "sans-serif";
+		font-weight: 100;
+		font-size: 38px;
+		text-align: center;
+		color: white;
+	}
+	.textCost {
+		margin: 20px;
+		font-family: Tahoma, "sans-serif";
+		font-weight: 100;
+		font-size: 44px;
+		text-align: center;
+		color: gold;
+	}
+/*	.tableMainText div {
+	    margin: 0;
+	    transition: transform 1s;
+	}
+	.tapToSelection {
+	    transform: translateY(0);
+	}
+	.selectionQuality {
+	    height: 0;
+	    transform: scaleY(0);
+	}
+	.tableMainText:hover .tapToSelection {
+	    height: 0;
+	    transform: translateY(-4vw) scaleY(0);
+	}
+	.tableMainText:hover .selectionQuality {
+	    height: 6.5vw;
+	    transform: translateY(-4vw) scaleY(1);
+	}*/
+	.variantQuality {
+	    margin: 0;
+	    padding: 10px 0 0 0;
+	    width: 100%;
+		height: 9vw;
+		text-align: center;
+		font-family: Tahoma, "sans-serif";
+		font-weight: 100;
+		font-size: 44px;
+		color: white;
+	}
+.border {
+	background-color: gold;
+	min-height: 2px;
+	min-width: 100%;
+}
+	.toBasket {
+	    position: absolute;
+	    display: block;
+	    box-sizing: border-box;
+	    border: 1px solid gold;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 32px;
+		color: gold;
+		text-align: center;
+	}

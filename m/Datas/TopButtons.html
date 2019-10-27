@@ -1,0 +1,130 @@
+<style type="text/css">
+	#topButtons {
+		margin: 0;
+		border: 0;
+		padding: 0;
+		position: fixed;
+		width: 100%;
+		z-index: 100;
+		top: 100px;
+	}
+	#topButtonSet {
+		margin: 0;
+		border: 0;
+		padding: 0;
+		width: 100%;
+		top: 100px;
+		z-index: 100;
+		display: none;
+	}
+	.topButton {
+		position: inherit;
+		display: block;
+		box-sizing: border-box;
+		margin: 0;
+		border: 0;
+		width: 100%;
+		padding: 30px 0;
+		text-align: center;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 300;
+		font-size: 52px;
+		color: gold;
+		background-color: black;
+		max-height: 140px;
+		min-height: 140px;
+		z-index: 100;
+	}
+	.topButton:hover {
+		position: inherit;
+		display: block;
+		box-sizing: border-box;
+		margin: 0;
+		border: 0;
+		width: 100%;
+		padding: 30px 0;
+		text-align: center;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 300;
+		font-size: 52px;
+		color: gold;
+		background-color: rgba(0,0,0,0.6);
+		max-height: 140px;
+		min-height: 140px;
+		z-index: 100;
+	}
+	.borderLine {
+	    margin: 0;
+	    border: 0;
+	    Padding: 0;
+	    background-color: gold;
+	    min-width: 100%;
+	    min-height: 2px;
+	}
+	.mTitleSite {
+		position: fixed;
+	    top: 0;
+	    left: 0;
+		color: gold;
+		font-size: 44px;
+		background-color: #000;
+		margin: 0;
+		border: 0;
+		box-sizing: border-box;
+		padding: 28px;
+		max-height: 100px;
+		min-height: 100px;
+		text-align: center;
+		width: 90%;
+		z-index: 10;
+	}
+	.mMenuImg {
+		position: fixed;
+	    top: 0;
+	    right: 0;
+		width: 10%;
+		max-height: 100px;
+		min-height: 100px;
+		margin: 0;
+		border: 0;
+		box-sizing: border-box;
+		padding: 20px;
+		background-color: #000;
+		z-index: 10;
+	}
+</style>
+	<div id="topButtons">
+		<p class="mTitleSite">Aliance of breeders fur chinchillas</p>
+		<img src="../../MyImages/main/menuMobile.png" class="mMenuImg">
+		<ul id="topButtonSet">
+		    <div class="borderLine"></div>
+			<li class="topButton" onClick='location.href="Mobile.php"'>Главная</li>
+		    <div class="borderLine"></div>
+			<li class="topButton" onClick='location.href="MBuying.php"'>Купить шиншиллу</li>
+		    <div class="borderLine"></div>
+			<li class="topButton" onClick='location.href="MMarked.php"'>Доска объявлений</li>
+		    <div class="borderLine"></div>
+			<li class="topButton" onClick='location.href="MGoods.php"'>Товары для шиншилл</li>
+		    <div class="borderLine"></div>
+			<li class="topButton" onClick='location.href="MInfo.php"'>О содержании</li>
+		    <div class="borderLine"></div>
+			<li class="topButton" onClick='location.href="MBack_call.php"'>Контакты</li>
+		    <div class="borderLine"></div>
+			<li class="topButton" id="openBasket" style="top: 600px" >Корзина</li>
+		    <div class="borderLine"></div>
+		</ul>
+	</div>
+	<div ng-view></div>
+<script type="text/jscript">
+    $(function () {
+    	$('.mMenuImg').click(function() {
+    		$('#topButtonSet').toggle(0);
+    	});
+    	$('#mainBody').click(function() {
+    		$('#topButtonSet').hide(0);
+    	});
+    	$(window).scroll(function() {
+    		$('#topButtonSet').hide(0);
+    	});
+    });
+</script>

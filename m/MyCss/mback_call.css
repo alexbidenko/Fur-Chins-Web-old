@@ -1,0 +1,62 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=cyrillic,cyrillic-ext');
+/* CSS Document */
+
+body, html, #mainBody {
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		min-height: 1200px;
+		max-height: 1200px;
+		background: #222;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	label {
+		width: 100%;
+		cursor: pointer;
+	}
+	.inputArea {
+		margin: 10px 5%;
+		height: 80px;
+		font-size: 32px;
+		background-color: #555;
+		width: 90%;
+		border: 1px solid #000;
+		border-radius: 5px;
+		box-sizing: border-box;
+		color: white;
+	}
+	h1 {
+	    display: inline-block;
+		color: gold;
+		font-size: 44px;
+		margin: 10px 30px;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+	}
+	.checkbox {
+	    display: inline-block;
+        max-height: 40px;
+        max-width: 40px;
+        min-height: 40px;
+        min-width: 40px;
+        padding: 5px;
+        margin: 0 0 20px 30px;
+        background-color: #555;
+        border: 2px solid gold;
+        border-radius: 3px;
+	}
+	.inputButton {
+		background-color: gold;
+		color: #000;
+		border: 5px solid;
+		padding: 5px;
+		font-size: 40px;
+		margin: 30px;
+		border-top-color: #F5EC71; 
+		border-right-color: #D1C84B;
+		border-bottom-color: #ABA005;
+		border-left-color: #CFC102;
+	}

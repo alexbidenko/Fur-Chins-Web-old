@@ -1,0 +1,53 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=cyrillic,cyrillic-ext');
+/* CSS Document */
+
+body, html, #mainBody {
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		background: #222;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	table {
+	    width: 100%;
+	}
+	tr {
+	    width: 100%;
+	}
+	.divImg {
+		width: 50%;
+		height: 140px;
+		border: 2px solid gold;
+	}
+	.divImg:hover {
+	    background-color: #555;
+	}
+	.titleTheme {
+		padding: 5px 0;
+		text-align: center;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-size: 46px;
+		font-weight: 200;
+		color: gold;
+	}
+	.asideInfo {
+		width: 100%;
+		min-height: 500px;
+		background-color: #222;
+	}
+	.titleInfo {
+		font-weight: 200;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+	    margin: 50px 0 0 0;
+		font-size: 50px;
+		text-align: center;
+		color: gold;
+	}
+	.pInfo {
+		padding: 40px;
+		color: white;
+		font-size: 40px;
+	}

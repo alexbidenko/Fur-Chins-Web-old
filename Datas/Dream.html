@@ -1,0 +1,294 @@
+<style type="text/css">
+#myGoods {
+	display: block;
+	position: fixed;
+	min-width: 550px;
+	max-width: 550px;
+	top: 74px;
+	right: 0;
+	z-index: 100;
+	display: none;
+}
+.goodsDiv {
+	overflow-y: auto;
+	overflow-x: hidden;
+	min-width: 550px;
+	max-width: 550px;
+}
+.dreamTable {
+	background-color: #000;
+	position: relative;
+} 
+.dreamTable:hover {
+	background-color: rgba(0, 0, 0, .6);
+	position: relative;
+} 
+.dreamTable tr {
+	padding: 0;
+	max-height: 80px;
+	border: 0;
+} 
+.dreamTable tr td {
+	padding: 0;
+	max-height: 80px;
+	border: 0;
+	margin: 0;
+} 
+.dreamImage {
+		max-height: 80px;
+		max-width: 80px;
+		min-height: 80px;
+		min-width: 80px;
+		border: 0;
+		margin: 0;
+	}
+	.cancelImage {
+		max-height: 40px;
+		max-width: 40px;
+		min-height: 40px;
+		min-width: 40px;
+		border: 0;
+		margin: 20px;
+	}
+.dreamChin {
+	display: inline-block;
+	max-height: 36px;
+	min-width: 390px;
+	color: white;
+	font-size: 18px;
+	padding: 5px;
+	margin: 0;
+	box-sizing: border-box;
+}
+.dreamInfo {
+	display: inline-block;
+	max-height: 40px;
+	color: white;
+	font-size: 14px;
+	padding: 5px 0 5px 5px;
+	margin: 0 10px 0 0;
+	border: 0;
+	box-sizing: border-box;
+}
+.dreamInfoI {
+	display: inline-block;
+	color: white;
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+		border: 0;
+	box-sizing: border-box;
+}
+.dreamCost {
+	display: inline-block;
+	width: 80px;
+	float: right;
+	color: gold;
+	font-size: 16px;
+	text-align: right;
+	padding: 7px 13px 0 13px;
+	margin: 0;
+		border: 0;
+	box-sizing: border-box;
+}
+	.titleDream {
+	    width: 550px;
+		margin: 0;
+		border: 0;
+		padding: 16px;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 22px;
+		color: gold;
+		text-align: center;
+	box-sizing: border-box;
+	}
+	.allCost {
+	    background-color: #000;
+	    height: 30px;
+	    vertical-align: middle;
+	}
+	.input_area {
+		width: 40px;
+		height: 40px;
+		max-width: 40px;
+		max-height: 40px;
+		box-sizing: border-box;
+		border: 1px solid rgb(255, 215, 0);
+		margin: 0 0 0 10px;
+		padding: 0;
+		background-color: rgba(0, 0, 0, .6);
+		color: gold;
+		text-align: center;
+		font-size: 14px;
+	}
+	.blockBasketCancel {
+		right: 0px;
+		max-width: 80px;
+		max-height: 80px;
+		border: 0;
+		margin: 0;
+		background-color: rgba(0, 0, 0, .6);
+		padding: 20px 0 0 20px;
+	box-sizing: border-box;
+	}
+	.basketCancel {
+		width: 50%;
+		height: 50%;
+		border: 0;
+		margin: 0;
+	}
+	#clearBasket:hover {
+		cursor: pointer;
+	}
+</style>
+<div id="myGoods">
+    <div class="goodsDiv">
+    	<p class="titleDream dreamTable" display="none">Вы еще ничего не выбрали</p>
+    	<p class="titleDream dreamTable" id="clearBasket" display="none">Очистить корзину</p>
+    	<p class="titleDream dreamTable" style="cursor: pointer" onClick='location.href="Back_call.php"' id="sendMessage" display="none">Заказать</p>
+	</div>
+</div>
+<script type="text/jscript">
+	$(function(){
+	    let Datas = {};
+	    $.ajax({
+            url: '../m/Data.json',
+            type: 'POST',
+            success: function(data) {
+                Datas = data;
+            }
+        });
+	    
+	    $('.goodsDiv').css("max-height", ($(window).height() - 74).toString() + "px");
+	    $(window).resize(function () {
+	        $('.goodsDiv').css("max-height", ($(window).height() - 74).toString() + "px");
+		});
+	    
+	    var visible = false;
+    	$('.basketButton').click(function() {
+    	    if (!visible) {
+        		if (parseInt(getCookie("goods")) > 0) {
+        			$('p.titleDream').hide(0);
+        			$('#clearBasket, .allCost, #sendMessage').show(0);
+        		} else {
+        		    $('p.titleDream').show(0);
+        			$('#clearBasket, .allCost, #sendMessage').hide(0);
+        		}
+        		$('table.dreamTable, .allCost').remove();
+        		var basketTable;
+        		var allCost = 0;
+            	for (var i = 1; i <= getCookie("goods"); i++) {
+            	    if (getCookie("productId" + i.toString()) != undefined) {
+    		            var chinchilla = Datas["chin"][getCookie("productId" + i.toString())];
+        		        var variant;
+        		        var chinCost;
+        		        if (getCookie("productQuality" + i.toString()) == "notBronze") {
+            	            allCost += parseInt(chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"]
+            	            * parseInt(getCookie("productPoints" + i.toString())))
+            	            chinCost = parseInt(chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"]
+            	            * parseInt(getCookie("productPoints" + i.toString())));
+            	            variant = getCookie("productVariant" + i.toString()) + " без оценки";
+            	            oneCost = chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"];
+        		        } else {
+        		            allCost += parseInt(chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"]
+            	            [getCookie("productQuality" + i.toString())] * parseInt(getCookie("productPoints" + i.toString())))
+            	            chinCost = parseInt(chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"]
+            	            [getCookie("productQuality" + i.toString())] * parseInt(getCookie("productPoints" + i.toString())))
+            	            variant = getCookie("productVariant" + i.toString()) + " " + getCookie("productQuality" + i.toString());
+            	            oneCost = chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"]
+            	            [getCookie("productQuality" + i.toString())];
+        		        }
+                        basketTable = $('<table class="dreamTable">' +
+                   			'<tr>' +
+                   				'<td>' +
+                   					'<img class="dreamImage" src="' + chinchilla["img"]["a"] + '">' +
+                   				'</td>' +
+                   				'<td>' +
+                   					'<p class="dreamChin">' + chinchilla["text"] + '</p>' +
+                   					'<p class="dreamInfo">' + variant + '</p>' +
+                   					'<p class="dreamInfoI"> x<input class="input_area" type="text" value="' + getCookie("productPoints" + i.toString()) + '"></p>' +
+                   					'<p class="dreamCost">' + chinCost + 'р</p>' +
+            					    '<span class="costVal" hidden="hidden">' + oneCost + '</span>' +
+            					    '<span class="number" hidden="hidden">' + i + '</span>' +
+                   				'</td>' +
+                   				'<td>' +
+                   					'<img class="cancelImage" src="../MyImages/main/basketCancel.png" onclick="cancelClick(this, ' + i + ')">' +
+                   				'</td>' +
+                   			'</tr>' +
+                   		'</table>');
+                	    $('#clearBasket').before(basketTable);
+            	    }
+            	}
+            	if (getCookie("goods") != undefined) {
+                	basketTable = $('<div class="allCost">' + 
+                	    '<p class="dreamInfo">Общая стоимость:</p>' +
+                        '<p class="dreamCost">' + allCost + 'р</p>' +
+                    '</div>');
+                    $('#clearBasket').before(basketTable);
+            	}
+            	$('#myGoods').slideDown(timeScroll/2);
+            	visible = true;
+    	    } else {
+        		$('#myGoods').slideUp(timeScroll/2, function () {
+        		    $('table.dreamTable, .allCost').remove();
+                	visible = false;
+        		});
+    	    }
+            $(".input_area").keydown(function(event) {
+                // Разрешаем: backspace, delete, tab и escape
+                if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 ||
+                // Разрешаем: Ctrl+A
+                (event.keyCode == 65 && event.ctrlKey === true) ||
+                // Разрешаем: home, end, влево, вправо
+                (event.keyCode >= 35 && event.keyCode <= 39)) {
+                // Ничего не делаем
+                return;
+                }
+                else {
+                // Обеждаемся, что это цифра, и останавливаем событие keypress
+                if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+                event.preventDefault();
+                }
+                }
+            });
+        	$('.input_area').keyup(function(event) {
+        	    var clicked = event.target;
+        	    var point = 0;
+        	    var allCost = 0;
+        	    var inputValue = $(clicked).val();
+        	    if (inputValue == "") {
+        	        inputValue = 0;
+        	    }
+        	    $(clicked).parents('.dreamTable').find('.dreamCost').text(parseInt($(clicked).parents('.dreamTable').find('.costVal').text()) * inputValue + 'р');
+        	    setCookie("productPoints" + parseInt($(clicked).parents('.dreamTable').find('.number').text()).toString(), inputValue);
+        	    for (var i = 0; i < $('.costVal').length; i++) {
+        	            point++;
+            	        allCost += parseInt($('.costVal').eq(i).text()) * parseInt($('.input_area').eq(i).val());
+        	        }
+        	    $('.allCost p.dreamCost').text(allCost + 'р');
+        	});
+    	});
+    	$('.topButton, #mainBody').click(function() {
+    	    if (visible) {
+        		$('#myGoods').slideUp(timeScroll/2, function () {
+        		    $('table.dreamTable, .allCost').remove();
+                	visible = false;
+        		});
+    	    }
+    	});
+	});
+	
+	$('#clearBasket').click(function() {
+		for(var i = 1; i <= getCookie("goods"); i++) {
+        			deleteCookie("productPoints" + i.toString());
+            		deleteCookie("productId" + i.toString());
+            		deleteCookie("productVariant" + i.toString());
+            		deleteCookie("productQuality" + i.toString());
+			$('#myGoods p.titleDream').show(0);
+			$('#clearBasket, .allCost, #sendMessage').hide(0);
+		}
+		deleteCookie("goods");
+		$('table.dreamTable, .allCost').remove();
+	});
+</script>

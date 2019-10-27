@@ -1,0 +1,82 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=cyrillic,cyrillic-ext');
+/* CSS Document */
+
+body, html, #mainBody {
+		width: 100%;
+		max-width: 100%;
+		background: #222;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	label {
+		width: 100%;
+		cursor: pointer;
+	}
+	.inputArea {
+		background-color: #555;
+		width: 100%;
+		border: 1px solid #000;
+		border-radius: 5px;
+		color: white;
+	}
+	h1 {
+	    display: inline-block;
+		color: gold;
+		font-size: 18px;
+		margin: 6px 0 0 0;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+	}
+	.checkbox {
+	    display: inline-block;
+        max-height: 16px;
+        max-width: 16px;
+        min-height: 16px;
+        min-width: 16px;
+        padding: 3px;
+        margin: 0 10px 6px 0;
+        background-color: #555;
+        border: 1px solid gold;
+        border-radius: 2px;
+	}
+	.inputButton {
+		background-color: gold;
+		color: #000;
+		border: 5px solid;
+		padding: 5px;
+		border-top-color: #F5EC71; 
+		border-right-color: #D1C84B;
+		border-bottom-color: #ABA005;
+		border-left-color: #CFC102;
+	}
+	.setBlockImage {
+		width: 50%;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	.blockImage {
+		background-color: white;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		vertical-align: top;
+	}
+	.imgBuying {
+		width: 100%;
+		height: 550px;
+		padding: 0;
+		margin: 0;
+		border: 0;
+		display: block;
+	}
+	.basketImg {
+		width: 50%;
+		height: 40px;
+		padding: 17px;
+		margin: 0;
+		border: 0;
+		display: block;
+	}

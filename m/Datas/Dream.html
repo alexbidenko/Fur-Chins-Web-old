@@ -1,0 +1,305 @@
+<style type="text/css">
+#myGoods {
+	min-width: 100%;
+	max-width: 100%;
+	min-height: 100%;
+	position: fixed;
+	top: 100px;
+	right: 0;
+	z-index: 150;
+	background-color: #000;
+	display: none;
+}
+.goodsDiv {
+	overflow-y: auto;
+	overflow-x: hidden;
+	min-width: 100%;
+	max-width: 100%;
+}
+.dreamTable {
+	background-color: #000;
+	position: relative;
+	z-index: 150;
+	margin: 0;
+}
+.dreamImage {
+		max-height: 200px;
+		max-width: 200px;
+		min-height: 200px;
+		min-width: 200px;
+		border: 0;
+		margin: 0;
+	}
+	.cancelImage {
+		max-height: 100px;
+		max-width: 100px;
+		min-height: 100px;
+		min-width: 100px;
+		border: 0;
+		margin: 50px;
+		right: 0;
+	}
+.dreamChin {
+	display: inline-block;
+	max-height: 100px;
+	min-width: 100%;
+	color: white;
+	font-size: 36px;
+	line-height: 95%;
+	padding: 0 10px;
+	margin: 0;
+	box-sizing: border-box;
+}
+.dreamInfo {
+	display: inline-block;
+	max-height: 100px;
+	color: white;
+	font-size: 38px;
+	padding: 0 0 0 10px;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+.dreamInfoI {
+	display: inline-block;
+	min-height: 100px;
+	max-height: 100px;
+	color: white;
+	font-size: 38px;
+	padding: 0;
+	margin: 0 10px;
+	border: 0;
+	box-sizing: border-box;
+}
+.dreamCost {
+	display: inline-block;
+	max-height: 100px;
+	float: right;
+	color: gold;
+	font-size: 44px;
+	text-align: right;
+	padding: 0 13px;
+	margin: 0;
+		border: 0;
+	box-sizing: border-box;
+}
+	.titleDream {
+	    width: 100%;
+		padding: 40px;
+		border: 2px solid gold;
+		font-family: 'Roboto', Tahoma, "sans-serif";
+		font-weight: 200;
+		font-size: 50px;
+		color: gold;
+		text-align: center;
+	box-sizing: border-box;
+	}
+	.allCost {
+	    background-color: #000;
+	}
+	.input_area {
+		min-width: 100px;
+		min-height: 50px;
+		max-width: 100px;
+		max-height: 50px;
+		box-sizing: border-box;
+		border: 1px solid gold;
+		margin: 0 0 0 10px;
+		padding: 0;
+		background-color: rgba(0, 0, 0, .6);
+		color: gold;
+		text-align: center;
+		font-size: 38px;
+	}
+	.blockBasketCancel {
+		right: 0px;
+		max-width: 80px;
+		max-height: 80px;
+		border: 0;
+		margin: 0;
+		background-color: rgba(0, 0, 0, .6);
+		padding: 20px 0 0 20px;
+	box-sizing: border-box;
+	}
+	.basketCancel {
+		width: 50%;
+		height: 50%;
+		border: 0;
+		margin: 0;
+	}
+	#clearBasket:hover {
+		cursor: pointer;
+	}
+	.mTitleSiteB {
+		position: fixed;
+	    top: 0;
+	    right: 0;
+		color: gold;
+		font-size: 44px;
+		background-color: #000;
+		margin: 0;
+		border: 0;
+		box-sizing: border-box;
+		padding: 28px;
+		max-height: 100px;
+		min-height: 100px;
+		text-align: center;
+		width: 90%;
+	    z-index: 150;
+	}
+	.mBackImg {
+		position: fixed;
+	    top: 0;
+	    left: 0;
+		width: 10%;
+		max-height: 100px;
+		margin: 0;
+		border: 0;
+		box-sizing: border-box;
+		padding: 20px;
+		min-height: 100px;
+		background-color: #000;
+	    z-index: 150;
+	}
+	#sendMessage {
+	    cursor: pointer;
+	}
+</style>
+<div id="myGoods">
+	<div>
+		<img src="../../MyImages/main/backImage.png" class="mBackImg">
+		<p class="mTitleSiteB">Aliance of breeders fur chinchillas</p>
+		<div class="goodsDiv">
+		    <p class="titleDream dreamTable" id="basketCreatePoint">Вы еще ничего не выбрали</p>
+		    <p class="titleDream dreamTable" id="clearBasket" display="none">Очистить корзину</p>
+		    <p class="titleDream dreamTable" onClick='location.href="MBack_call.php"' id="sendMessage" display="none">Заказать</p>
+		</div>
+	</div>
+</div>
+<script type="text/jscript">
+	$(function(){
+	    var Datas;
+	    var requestURL = 'Data.json';
+	    var request = new XMLHttpRequest();
+    	request.open('GET', requestURL);
+    	request.responseType = 'json';
+        request.send();
+        request.onload = function() {
+            Datas = request.response;
+        }
+	    $('.goodsDiv').css("max-height", ($(window).height() - 100).toString() + "px");
+	    $(window).resize(function () {
+	        $('.goodsDiv').css("max-height", ($(window).height() - 100).toString() + "px");
+		});
+		
+	    $('.mBackImg').click(function() {
+	        $('#myGoods').hide(0);
+	    	$('table.dreamTable, .allCost').remove();
+	    });
+	    
+	    $('#openBasket').click(function() {
+			if (parseInt(getCookie("goods")) > 0) {
+				$('p.titleDream').hide(0);
+				$('#clearBasket, #sendMessage').show(0);
+			}
+    		$('table.dreamTable, .allCost').remove();
+    		var basketTable;
+    		var allCost = 0;
+    		for (var i = 1; i <= getCookie("goods"); i++) {
+    		    if (getCookie("productId" + i.toString()) != undefined) {
+    		        var typeProduct = "";
+        		    for (var keyProduct in Datas["chin"]) {
+        		        if (getCookie("productId" + i.toString()) == keyProduct) {
+        		            typeProduct = "chin"
+        		        }
+        		    }
+        		    if (typeProduct == "") typeProduct = "goods";
+    		        var chinchilla = Datas[typeProduct][getCookie("productId" + i.toString())];
+    		        var variant = "";
+    		        var chinCost;
+    		        var image;
+    		        if (typeProduct == "chin") {
+        		        if (getCookie("productQuality" + i.toString()) == "notBronze") {
+            	            chinCost = parseInt(chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"]
+            	            * parseInt(getCookie("productPoints" + i.toString())));
+            	            variant = getCookie("productVariant" + i.toString()) + " без оценки";
+            	            oneCost = chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"];
+        		        } else {
+            	            chinCost = parseInt(chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"]
+            	            [getCookie("productQuality" + i.toString())] * parseInt(getCookie("productPoints" + i.toString())));
+            	            variant = getCookie("productVariant" + i.toString()) + " " + getCookie("productQuality" + i.toString());
+            	            oneCost = chinchilla["variant"][getCookie("productVariant" + i.toString())]["cost"]
+            	            [getCookie("productQuality" + i.toString())];
+        		        }
+        		        image = chinchilla["img"]["a"];
+    		        } else {
+    		            image = chinchilla["img"];
+    		            chinCost = parseInt(chinchilla["cost"] * parseInt(getCookie("productPoints" + i.toString())));
+            	        oneCost = chinchilla["cost"];
+    		        }
+        	        basketTable = $('<table class="dreamTable">' +
+            			'<tr style="width: 100%">' +
+            				'<td style="width: 20%">' +
+            					'<img class="dreamImage" src="' + image + '">' +
+            				'</td>' +
+            				'<td style="width: 60%">' +
+            					'<p class="dreamChin">' + chinchilla["text"] + '</p>' +
+            					'<p class="dreamInfo">' + variant + '</p>' +
+               					'<p class="dreamInfoI">x<input class="input_area" type="number" value="' + getCookie("productPoints" + i.toString()) + '"></p>' +
+            					'<p class="dreamCost">' + chinCost + 'р</p>' +
+            					'<span class="costVal" hidden="hidden">' + oneCost + '</span>' +
+            					'<span class="number" hidden="hidden">' + i + '</span>' +
+            				'</td>' +
+               				'<td style="width: 20%">' +
+               					'<img class="cancelImage" src="../MyImages/main/basketCancel.png" onclick="cancelClick(this, ' + i + ')">' +
+               				'</td>' +
+            			'</tr>' +
+            		'</table>');
+            	    $('#clearBasket').before(basketTable);
+    		    }
+    		}
+    		for (var i = 0; i < $('.costVal').length; i++) {
+                allCost += parseInt($('.costVal').eq(i).text()) * parseInt($('.input_area').eq(i).val());
+        	}
+        	if (getCookie("goods") != undefined) {
+            	basketTable = $('<div class="allCost">' + 
+            	    '<p class="dreamInfo">Общая стоимость:</p>' +
+                    '<p class="dreamCost">' + allCost + 'р</p>' +
+                '</div>');
+                $('#clearBasket').before(basketTable);
+        	}
+	        $('#myGoods').show(0);
+	        
+        	$('.input_area').keyup(function(event) {
+        	    var clicked = event.target;
+        	    var point = 0;
+        	    var allCost = 0;
+        	    var inputValue = $(clicked).val();
+        	    if (inputValue == "") {
+        	        inputValue = 0;
+        	    }
+        	    $(clicked).parents('.dreamTable').find('.dreamCost').text(parseInt($(clicked).parents('.dreamTable').find('.costVal').text()) * inputValue + 'р');
+        	    setCookie("productPoints" + parseInt($(clicked).parents('.dreamTable').find('.number').text()).toString(), inputValue);
+        	    for (var i = 0; i < $('.costVal').length; i++) {
+        	            point++;
+        	            if ($('.input_area').eq(i).val() != "") allCost += parseInt($('.costVal').eq(i).text()) * parseInt($('.input_area').eq(i).val());
+        	        }
+        	    $('.allCost p.dreamCost').text(allCost + 'р');
+        	    
+        	});
+        	
+        	$('#clearBasket').click(function() {
+        		for(var i = 1; i <= getCookie("goods"); i++) {
+        			deleteCookie("productPoints" + i.toString());
+            		deleteCookie("productId" + i.toString());
+            		deleteCookie("productVariant" + i.toString());
+            		deleteCookie("productQuality" + i.toString());
+        			$('#myGoods p.titleDream').show(0);
+        			$('#clearBasket, #sendMessage').hide(0);
+        		}
+        		deleteCookie("goods");
+        		$('table.dreamTable, .allCost').remove();
+        	});
+	    });
+	});
+</script>
